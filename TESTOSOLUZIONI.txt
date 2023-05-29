@@ -36,4 +36,4 @@ SELECT COUNT(YEAR(date_of_birth)), YEAR(date_of_birth) FROM `students` GROUP BY 
 SELECT exam_id, MIN(vote) FROM `exam_student` GROUP BY exam_id;
 
 4.
-SELECT COUNT(MONTH(`date`) = 07), DAY(`date`) FROM `exams` GROUP BY DAY(`date`);
+SELECT COUNT(DAY(`date`)) , DAY(`date`) FROM `exams` WHERE MONTH(`date`) = 07 GROUP BY DAY(`date`);
