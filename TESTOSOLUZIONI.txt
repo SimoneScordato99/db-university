@@ -1,0 +1,39 @@
+1.
+SELECT * FROM `teachers`
+
+2.
+SELECT `head_of_department`
+FROM `departments`
+
+3.
+SELECT `name` FROM `students` WHERE `name` LIKE 'e%';
+
+4.
+SELECT `enrolment_date` FROM `students` WHERE YEAR(`enrolment_date`)=2021;
+
+5.
+SELECT * FROM `courses` WHERE `website` IS NULL;
+
+6.
+SELECT * FROM `teachers` WHERE`phone` IS NOT NULL;
+
+7.
+SELECT * FROM `exams` WHERE MONTH(`date`)=06 OR MONTH(`date`)=07;
+
+8.
+SELECT * FROM `students`;
+
+
+
+
+1.
+SELECT COUNT(cfu), cfu FROM `courses` GROUP BY cfu;
+
+2.
+SELECT COUNT(YEAR(date_of_birth)), YEAR(date_of_birth) FROM `students` GROUP BY YEAR(date_of_birth);
+
+3.
+SELECT exam_id, MIN(vote) FROM `exam_student` GROUP BY exam_id;
+
+4.
+SELECT COUNT(MONTH(`date`) = 07), DAY(`date`) FROM `exams` GROUP BY DAY(`date`);
