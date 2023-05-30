@@ -37,3 +37,24 @@ SELECT exam_id, MIN(vote) FROM `exam_student` GROUP BY exam_id;
 
 4.
 SELECT COUNT(DAY(`date`)) , DAY(`date`) FROM `exams` WHERE MONTH(`date`) = 07 GROUP BY DAY(`date`);
+
+
+
+1.
+SELECT degrees.name , students.name, students.surname , students.registration_number FROM `degrees` JOIN `students` ON degrees.id = students.degree_id WHERE degrees.name LIKE 'Corso di Laurea in Economia';
+
+2.
+SELECT degrees.department_id , degrees.name , departments.id , departments.name FROM `degrees` JOIN `departments` ON degrees.department_id = departments.id WHERE departments.name LIKE '%Neuroscienze%' AND degrees.name LIKE '%magistrale%';
+
+3.
+SELECT courses.id , courses.name , teachers.id , teachers.name , teachers.surname FROM `course_teacher` JOIN `courses` ON courses.id = course_teacher.course_id JOIN `teachers` ON teachers.id = course_teacher.teacher_id WHERE teachers.id = 44;
+SELECT courses.id , courses.name , teachers.id , teachers.name , teachers.surname FROM `courses` JOIN `teachers` ON teachers.id = courses.id;
+
+4.
+SELECT students.id , students.name , students.surname , degrees.id , degrees.name , departments.id , departments.name FROM `students` JOIN `degrees` ON degrees.id = students.degree_id JOIN `departments` ON departments.id = degrees.department_id;
+
+5.
+SELECT degrees.name , degrees.id , courses.name, courses.id , teachers.name , teachers.surname FROM `degrees` JOIN `courses` ON degrees.id = courses.degree_id JOIN `teachers` ON teachers.id = courses.id;
+
+6.
+SELECT teachers.* FROM `teachers` JOIN `course_teacher` ON teachers.id = course_teacher.teacher_id JOIN `courses` ON courses.id = course_teacher.course_id JOIN `degrees` ON degrees.id = courses.degree_id JOIN `departments` ON departments.id = degrees.department_id WHERE departments.id = 5 GROUP BY teachers.id;
